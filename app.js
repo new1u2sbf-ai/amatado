@@ -95,7 +95,9 @@ function myChar() {
 
 $("#openCommon").onclick = () => viewPdf(game.common, "共通シート", "menu");
 $("#openCards").onclick = async () => {
-  if (await ask("調査カードの中身がすべて載っています。遊ぶ前には開かないでください。印刷用に開きますか？")) viewPdf(game.cards, "調査カード", "menu");
+  if (await ask("これは紙に印刷して遊ぶとき用のPDFで、調査カードの中身がすべて載っています。
+スマホで遊ぶときは、進行アプリの「調査」でカードを開いてください。
+印刷用に開きますか？")) viewPdf(game.cards, "調査カード", "menu");
 };
 $("#openReadme").onclick = async () => {
   $("#textBody").textContent = await game.readme.async("string");

@@ -38,3 +38,6 @@ dialog button{border:1px solid var(--line);background:var(--card);border-radius:
 dialog button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:700}
 #confirmText{white-space:pre-line}
 .linkbtn{display:block;margin:-4px 0 14px auto;border:0;background:none;color:var(--muted);font-size:13px;text-decoration:underline;padding:6px;cursor:pointer}
+.minihead{margin:22px 0 8px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+.item.mini{padding:12px 14px}
+.item.mini b{font-size:14px}
