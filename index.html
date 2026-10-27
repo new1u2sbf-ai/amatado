@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>あまた堂 再生ツール</title>
+<meta name="description" content="あまた堂のマーダーミステリーを、スマホだけで遊ぶためのツール。購入したzipを選ぶと、端末の中だけで開きます。">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- はじめの画面：zipを選ぶ -->
+  <section id="home" class="screen">
+    <header class="top"><h1>あまた堂 再生ツール</h1></header>
+    <div class="wrap">
+      <p class="lead">BOOTHで購入したマーダーミステリーのzipを選ぶと、スマホだけで遊べます。</p>
+      <label class="bigbtn" for="zipInput">zipファイルを選ぶ</label>
+      <input id="zipInput" type="file" accept=".zip,application/zip,application/x-zip-compressed">
+      <p id="homeMsg" class="msg" role="status"></p>
+      <ul class="notes">
+        <li>zipの中身はこの端末の中だけで開きます。どこにも送信しません。</li>
+        <li>iPhoneは「ファイル」アプリに保存したzipを、Androidは「ダウンロード」にあるzipを選んでください。</li>
+        <li>遊ぶ人は、共通シートと自分のキャラクターシート以外を開かないでください。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 中身の一覧 -->
+  <section id="menu" class="screen" hidden>
+    <header class="top"><button class="back" data-go="home" type="button">‹ zipを選び直す</button><h1 id="gameTitle"></h1></header>
+    <div class="wrap">
+      <button class="item" id="openCommon" type="button"><b>共通シート</b><small>全員が最初に読むシート</small></button>
+      <button class="item" id="openChars" type="button"><b>キャラクターシート</b><small id="charNote">自分のキャラクターを選んでから開きます</small></button>
+      <button class="linkbtn" id="resetChar" type="button" hidden>選んだキャラクターを取り消す</button>
+      <button class="item" id="openApp" type="button"><b>進行アプリ</b><small>タイマー・調査・投票・解説</small></button>
+      <button class="item sub" id="openCards" type="button"><b>調査カード（印刷用）</b><small>調査は進行アプリの中でも開けます</small></button>
+      <button class="item sub" id="openReadme" type="button"><b>はじめにお読みください</b><small>遊び方と利用規約</small></button>
+    </div>
+  </section>
+
+  <!-- キャラクターを選ぶ -->
+  <section id="chars" class="screen" hidden>
+    <header class="top"><button class="back" data-go="menu" type="button">‹ 戻る</button><h1>キャラクターを選ぶ</h1></header>
+    <div class="wrap">
+      <p class="lead">くじで決まった、あなたのキャラクターを選んでください。他の人のシートは開かないでください。</p>
+      <div id="charList"></div>
+    </div>
+  </section>
+
+  <!-- PDFを見る -->
+  <section id="viewer" class="screen" hidden>
+    <header class="top"><button class="back" id="viewerBack" type="button">‹ 戻る</button><h1 id="viewerTitle"></h1></header>
+    <div id="pages" class="pages"></div>
+  </section>
+
+  <!-- テキストを見る -->
+  <section id="text" class="screen" hidden>
+    <header class="top"><button class="back" data-go="menu" type="button">‹ 戻る</button><h1>はじめにお読みください</h1></header>
+    <pre id="textBody" class="wrap textbody"></pre>
+  </section>
+
+  <!-- 進行アプリ -->
+  <section id="player" class="screen" hidden>
+    <header class="top slim"><button class="back" id="playerBack" type="button">‹ 一覧に戻る</button></header>
+    <iframe id="appFrame" title="進行アプリ"></iframe>
+  </section>
+
+</div>
+<dialog id="confirm"><p id="confirmText"></p><div class="row"><button type="button" id="confirmNo">やめる</button><button type="button" id="confirmYes" class="primary">開く</button></div></dialog>
+<script src="vendor/jszip.min.js"></script>
+<script src="vendor/pdf.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
