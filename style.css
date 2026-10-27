@@ -41,3 +41,6 @@ dialog button.primary{background:var(--accent);color:var(--accent-ink);border-co
 .minihead{margin:22px 0 8px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
 .item.mini{padding:12px 14px}
 .item.mini b{font-size:14px}
+.howto{font-size:16px;margin:28px 0 8px}
+.steps{margin:0;padding-left:1.4em;font-size:15px}
+.steps li{margin-bottom:8px}
